@@ -11,8 +11,8 @@ locals {
 
 # Module invocation to public project-factory module.
 module "projects" {
-  source   = "terraform-google-modules/project-factory/google"
-  version  = "~> 14.1"
+  source   = "jenkins-admin1/project-main-module"
+  version  = "~> 0.0.1"
   for_each = local.projects
 
   name              = each.key
