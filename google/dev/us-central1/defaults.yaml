@@ -1,0 +1,6 @@
+# Directory with all .yaml definition of project specific data
+data_dir             : "projects/"
+
+# Variable required by factory module invocation in //src/main.tf 
+org_id               : "00000000001"
+billing_account   = "010BAA-5F9EE7-B2E020"
