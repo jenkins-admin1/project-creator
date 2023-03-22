@@ -1,7 +1,7 @@
 labels:
   department: engineering
-  application: app1
-  environment: dev
+  application: app2
+  environment: qa
 
 # [opt] APIs to enable on the project.
 services:
