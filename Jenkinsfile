@@ -10,36 +10,31 @@ pipeline {
             }
         }
         
-        stage('working module') 
-        {
-            steps 
-            {
-                dir('basic_platform')
-            }
-        }
-        
         stage('initialize') 
         {
-            steps 
-            {
-                sh ("terraform init");
+            steps {
+                dir('basic_platform') {
+                    sh 'terraform init'
+                }
             }
         }
         
         stage('validate') 
         {
-            steps 
-            {
-                sh ("terraform plan");
+            steps {
+                dir('basic_platform') {
+                    sh 'terraform plan'
+                }
             }
         }
         
         stage('Terraform apply') 
         {
-            steps 
-            {
-                echo "terraform action from the parameter is --> ${action}"
-                sh ("terraform ${action} --auto-approve");
+            steps {
+                dir('basic_platform') {
+                    echo "terraform action from the parameter is --> ${action}"
+                sh ("terraform ${action} --auto-approve")
+                }
             }
         }
     }
