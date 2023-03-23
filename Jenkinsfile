@@ -10,6 +10,14 @@ pipeline {
             }
         }
         
+        stage('working module') 
+        {
+            steps 
+            {
+                dir('basic_platform')
+            }
+        }
+        
         stage('initialize') 
         {
             steps 
