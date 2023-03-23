@@ -3,7 +3,7 @@
  *******************************************/
 
 resource "google_folder" "terragrunt" {
-  display_name = "terragrunt_test"
+  display_name = "terragrunt-test"
   parent       = var.org_id
 }
 
