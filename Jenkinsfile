@@ -14,7 +14,7 @@ pipeline {
         {
             steps {
                 dir('${provider}/${environment}/${region}') {
-                    sh 'terraform init'
+                    sh 'terragrunt init'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         {
             steps {
                 dir('${provider}/${environment}/${region}') {
-                    sh 'terraform plan'
+                    sh 'terragrunt plan'
                 }
             }
         }
@@ -32,8 +32,8 @@ pipeline {
         {
             steps {
                 dir('${provider}/${environment}/${region}') {
-                    echo "terraform action from the parameter is --> ${action}"
-                sh ("terraform ${action} --auto-approve")
+                    echo "terragrunt action from the parameter is --> ${action}"
+                sh ("terragrunt ${action} --auto-approve")
                 }
             }
         }
