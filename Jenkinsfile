@@ -13,11 +13,7 @@ pipeline {
         stage('initialize') 
         {
             steps {
-                dir(${params.provider}/${params.environment}/${params.region}) {
-                    echo "Provider: ${params.provider}"
-                    echo "Environment: ${params.environment}"
-                    echo "Region: ${params.region}"
-                    sh 'terragrunt init'
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt init"
                 }
             }
         }
@@ -25,8 +21,7 @@ pipeline {
         stage('validate') 
         {
             steps {
-                dir(${params.provider}/${params.environment}/${params.region}) {
-                    sh 'terragrunt plan'
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt plan"
                 }
             }
         }
@@ -34,9 +29,7 @@ pipeline {
         stage('Terraform apply') 
         {
             steps {
-                dir(${params.provider}/${params.environment}/${params.region}) {
-                    echo "terragrunt action from the parameter is --> ${action}"
-                sh ("terragrunt ${action} --auto-approve")
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt apply --auto-approve"
                 }
             }
         }
