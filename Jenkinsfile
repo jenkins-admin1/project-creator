@@ -13,7 +13,7 @@ pipeline {
         stage('initialize') 
         {
             steps {
-                dir('basic_platform') {
+                dir('${provider}/${environment}/${region}') {
                     sh 'terraform init'
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('validate') 
         {
             steps {
-                dir('basic_platform') {
+                dir('${provider}/${environment}/${region}') {
                     sh 'terraform plan'
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
         stage('Terraform apply') 
         {
             steps {
-                dir('basic_platform') {
+                dir('${provider}/${environment}/${region}') {
                     echo "terraform action from the parameter is --> ${action}"
                 sh ("terraform ${action} --auto-approve")
                 }
