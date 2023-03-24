@@ -30,7 +30,6 @@ pipeline {
             steps {
                 sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt apply --auto-approve"
                 }
-            }
         }
     }
 }
