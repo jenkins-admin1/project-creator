@@ -56,7 +56,7 @@ resource "google_project_iam_member" "project_access" {
   member  = "group:terraform_admins@markroofing.com"
 }
 
-resource "google_folder_iam_member" "folder_access" {
+resource "google_folder_iam_member" "terragrunt-test_access" {
   folder = google_folder.terragrunt.id
   role   = "roles/browser"
   member = "group:terraform_admins@markroofing.com"
@@ -70,7 +70,7 @@ resource "google_folder" "dev" {
   parent       = google_folder.terragrunt.id
 }
 
-resource "google_folder_iam_member" "folder_access" {
+resource "google_folder_iam_member" "dev_folder_access" {
   folder = google_folder.dev.id
   role   = "roles/browser"
   member = "group:dev_users@markroofing.com"
