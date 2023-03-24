@@ -13,7 +13,7 @@ pipeline {
         stage('initialize') 
         {
             steps {
-                dir('${params.provider}/${params.environment}/${params.region}') {
+                dir(${params.provider}/${params.environment}/${params.region}) {
                     echo "Provider: ${params.provider}"
                     echo "Environment: ${params.environment}"
                     echo "Region: ${params.region}"
@@ -25,7 +25,7 @@ pipeline {
         stage('validate') 
         {
             steps {
-                dir('${params.provider}/${params.environment}/${params.region}') {
+                dir(${params.provider}/${params.environment}/${params.region}) {
                     sh 'terragrunt plan'
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
         stage('Terraform apply') 
         {
             steps {
-                dir('${params.provider}/${params.environment}/${params.region}') {
+                dir(${params.provider}/${params.environment}/${params.region}) {
                     echo "terragrunt action from the parameter is --> ${action}"
                 sh ("terragrunt ${action} --auto-approve")
                 }
