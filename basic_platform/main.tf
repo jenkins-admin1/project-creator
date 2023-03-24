@@ -47,6 +47,20 @@ resource "local_file" "root-vars" {
   filename = "../root.yaml"
 }
 
+/*******************************************
+  Project access
+ *******************************************/
+resource "google_project_iam_member" "project_access" {
+  project = google_project.seed_project.project_id
+  role    = "roles/owner"
+  member  = "group:terraform_admins@markroofing.com"
+}
+
+resource "google_folder_iam_member" "folder_access" {
+  folder = google_folder.terragrunt.id
+  role   = "roles/browser"
+  member = "group:terraform_admins@markroofing.com"
+}
 
 /*************************************************
   Create dev Folder and populate defaults.yaml 
@@ -54,6 +68,12 @@ resource "local_file" "root-vars" {
 resource "google_folder" "dev" {
   display_name = "dev"
   parent       = google_folder.terragrunt.id
+}
+
+resource "google_folder_iam_member" "folder_access" {
+  folder = google_folder.dev.id
+  role   = "roles/browser"
+  member = "group:dev_users@markroofing.com"
 }
 
 
