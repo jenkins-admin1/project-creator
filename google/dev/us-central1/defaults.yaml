@@ -1,6 +1,11 @@
 # Directory with all .yaml definition of project specific data
 data_dir             : "projects/"
 
+# Values for where to store state of projects
+root_project : terragrunt-seedproject-bc4da0
+bucket_prefix : terragrunt-iac-core-bkt-bc4da0
+region : us-central1
+
 # Variable required by factory module invocation in //src/main.tf 
-#org_id               : "00000000001"
-#billing_account   = "010BAA-5F9EE7-B2E020"
+org_id               : "organizations/837910092674"
+billing_account   = "0110C3-10BB91-8EDC2A"
