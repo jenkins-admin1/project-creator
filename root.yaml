@@ -1,0 +1,4 @@
+# Values for where to store state of projects
+root_project : terragrunt-seedproject
+bucket_prefix : terragrunt-iac-core-bkt-bc4da0
+region : us-central1
