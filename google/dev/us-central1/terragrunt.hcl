@@ -22,8 +22,5 @@ include "root" {
 # Sets default value for all projects in this category
 inputs = {
     defaults_file = "defaults.yaml"
-}
-
-inputs = {
-  data_dir = "./src/projects"
+    data_dir = "./projects"
 }
