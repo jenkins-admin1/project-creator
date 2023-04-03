@@ -14,21 +14,21 @@ pipeline {
         stage('initialize') 
         {
             steps {
-                sh "terragrunt init"
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt init"
                 }
         }
         
         stage('validate') 
         {
             steps {
-                sh "terragrunt plan"
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt plan"
                 }
         }
         
         stage('apply') 
         {
             steps {
-                sh "terragrunt apply --auto-approve"
+                sh "cd /var/lib/jenkins/workspace/project-creator/${params.provider}/${params.environment}/${params.region} && terragrunt apply --auto-approve"
                 }
         }
     }
