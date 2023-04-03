@@ -22,16 +22,14 @@ include "root" {
 # Reads values from default.yaml
 locals {
   vars = yamldecode(file(find_in_parent_folders("default.yaml", "default.yaml")))
+  inputs = merge(
+    {
+      defaults_file = "defaults.yaml",
+      data_dir = "./projects"
+    },
+    local.vars
+  )
 }
-
-# Sets default value for all projects in this category
-inputs = merge(
-  {
-    defaults_file = "defaults.yaml",
-    data_dir = "./projects"
-  },
-  local.vars
-)
 
 /** Defines remote state for each subdirectory with a .terragrunt.hcl file
  setting a relative path. */
