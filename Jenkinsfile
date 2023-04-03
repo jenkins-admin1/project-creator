@@ -7,7 +7,21 @@ pipeline {
         {
             steps 
             {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jenkins-admin1/project-creator.git']])
+                checkout scmGit(
+                    branches: [[name: '*/master']], 
+                    extensions: [
+                        [
+                            $class: 'SubmoduleOption', 
+                            disableSubmodules: false, 
+                            parentCredentials: true, 
+                            recursiveSubmodules: true, 
+                            reference: '', 
+                            trackingSubmodules: false
+                        ]
+                    ],
+                    userRemoteConfigs: [[url: 'https://github.com/jenkins-admin1/project-creator.git']]
+                )
+
             }
         }
         
