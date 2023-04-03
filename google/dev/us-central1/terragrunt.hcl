@@ -2,7 +2,7 @@ terraform {
   # Pull the terraform configuration from the local file system. Terragrunt will make a copy of the source folder in the
   # Terragrunt working directory (typically `.terragrunt-cache`).
   # Note: The source can also reference a module registry to eg. implement a different blueprint for each team
-  source = "../../../src"
+  source = "../../src"
 
 include "root" {
   path = find_in_parent_folders()
